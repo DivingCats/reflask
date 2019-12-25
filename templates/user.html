@@ -5,11 +5,15 @@
 {#    <title>User</title>#}
 {#</head>#}
 {#<body>#}
+    {#　继承bootstrp的基础页面　#}
     {% extends "bootstrap/base.html" %}
+    {# 导入wtf表单处理模块 #}
     {% import "bootstrap/wtf.html" as wtf %}
 
+    {# 定义title #}
     {% block title %}Flasky{% endblock %}
 
+    {# 定义导航栏 #}
     {% block navbar %}
     <div class="navbar navbar-inverse" role="navigation">
         <div class="container">
@@ -32,13 +36,16 @@
     </div>
     {% endblock %}
 
+    {# 定义内容栏 #}
     {% block content %}
     <div class="container">
         <div class="page-header">
+            {# 判断传入的name字段是否存在，进行不同的内容渲染 #}
             <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
         </div>
     </div>
 
+    {# 调用wtf的表单模块 #}
     {{ wtf.quick_form(form) }}
     {% endblock %}
 {#</body>#}
