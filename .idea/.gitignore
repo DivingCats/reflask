@@ -1,2 +1,6 @@
 # Default ignored files
 /workspace.xml
+/vcs.xml
+/reflask.iml
+/modules.xml
+/misc.xml
