@@ -11,7 +11,7 @@ from . import main
 from .forms import NameForm
 
 
-@main.route('/', methods=['GET', 'POST'])
+@main.route('/index', methods=['GET', 'POST'])
 def index():
     return render_template('index.html', )
 
