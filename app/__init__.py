@@ -7,13 +7,11 @@
 
 from flask import Flask
 from flask_bootstrap import Bootstrap
-from flask_restful import Api, Resource
 from config import config
-
-from .main import main as main_bluepoint
-from .api import api_bp as api_bluepoint
+from flask_neo4j import Neo4j
 
 bootstrap = Bootstrap()
+neo4j = Neo4j()
 # api = Api()
 
 
@@ -23,9 +21,13 @@ def create_app(config_name):
     config[config_name].init_app(app)
 
     bootstrap.init_app(app)
+    neo4j.init_app(app)
     # Api.init_app(app)
 
     # 注册蓝本
+    from .main import main as main_bluepoint
+    from .api import api_bp as api_bluepoint
+
     app.register_blueprint(main_bluepoint)
     app.register_blueprint(api_bluepoint)
 

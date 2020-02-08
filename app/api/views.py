@@ -7,6 +7,7 @@
 
 from . import api
 from flask_restplus import reqparse, Resource, fields
+from .. import neo4j
 
 api = api.namespace('TestAPI', discription='Test operation')
 
@@ -22,6 +23,11 @@ class Rest(Resource):
     @api.doc('查询一个')
     @api.response(201, 'Found')
     def get(self, rate):
+        # for rel in graph.match((person,), r_type="Person"):
+        #     print(rel.end_node["name"])
+        g=neo4j.gdb.run("MATCH (n:Person) RETURN n LIMIT 5")
+        for i in g:
+            print(g.data())
         return rate
 
     @api.doc('删除一个')
